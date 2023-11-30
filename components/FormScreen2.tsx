@@ -1,6 +1,6 @@
 // Form2Screen.js
 import React from 'react';
-import {View, Text, Button, TextInput, Pressable} from 'react-native';
+import {View, Text, TextInput, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {useFormContext} from '../context/FormContext';

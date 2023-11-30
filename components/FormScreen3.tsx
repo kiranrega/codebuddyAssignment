@@ -1,14 +1,6 @@
 // PhoneFormComponent.js
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  TextInput,
-  TouchableOpacity,
-  Pressable,
-} from 'react-native';
+import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native';
 import {Input, CheckBox} from 'react-native-elements';
 import {Formik} from 'formik';
 import * as Yup from 'yup';

@@ -1,17 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Button,
-  TextInput,
-  StyleSheet,
-  Pressable,
-} from 'react-native';
+import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {useFormContext} from '../context/FormContext';
 
-// Validation schema for Form 1
 const form1ValidationSchema = Yup.object().shape({
   emailId: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string()
@@ -34,15 +26,7 @@ const FormScreen1 = ({navigation}: any) => {
         setFieldData('password', values.password);
         navigation.navigate('FormScreen2', {formData: values});
       }}>
-      {({
-        values,
-        handleChange,
-        handleSubmit,
-        errors,
-        isValid,
-        touched,
-        handleBlur,
-      }) => (
+      {({values, handleChange, handleSubmit, errors, touched, handleBlur}) => (
         <View style={styles.container}>
           <Text style={styles.formTitle}>Form 1</Text>
           <Text style={styles.label}>EMail</Text>
