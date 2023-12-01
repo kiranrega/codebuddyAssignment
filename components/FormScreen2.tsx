@@ -1,5 +1,5 @@
 // Form2Screen.js
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TextInput, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -20,12 +20,13 @@ const form2ValidationSchema = Yup.object().shape({
 
 const FormScreen2 = ({navigation}: any) => {
   const {setFieldData} = useFormContext();
+  const [saveNext, setSaveNext] = useState(false);
 
   return (
     <Formik
       initialValues={{firstName: '', lastName: '', address: ''}}
       validationSchema={form2ValidationSchema}
-      onSubmit={(values, {setSubmitting}) => {
+      onSubmit={values => {
         // Handle form submission
         setFieldData('firstName', values.firstName);
         setFieldData('lastName', values.lastName);
@@ -82,7 +83,15 @@ const FormScreen2 = ({navigation}: any) => {
               style={styles.pressable}>
               <Text>Back</Text>
             </Pressable>
-            <Pressable onPress={() => handleSubmit()} style={styles.pressable}>
+            <Pressable style={styles.pressable} onPress={() => handleSubmit()}>
+              <Text>Save</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                handleSubmit();
+                setSaveNext(true);
+              }}
+              style={styles.pressable}>
               <Text>Save and Next</Text>
             </Pressable>
           </View>

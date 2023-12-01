@@ -1,7 +1,7 @@
 // PhoneFormComponent.js
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native';
-import {Input, CheckBox} from 'react-native-elements';
+import {CheckBox} from 'react-native-elements';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {useFormContext} from '../context/FormContext';
@@ -42,7 +42,6 @@ const FormScreen3 = ({navigation}: any) => {
           setFieldData('phoneNumber', values.phoneNumber);
           setFieldData('countryCode', values.countryCode);
           setModalVisible(true);
-          console.log(values);
         }}>
         {({
           values,
@@ -92,23 +91,25 @@ const FormScreen3 = ({navigation}: any) => {
               }}
               containerStyle={styles.checkboxContainer}
               textStyle={styles.checkboxText}
-              checkedIcon="check-square-o"
-              uncheckedIcon="square-o"
+              checkedIcon="check"
+              uncheckedIcon="check"
               checkedColor="green"
               uncheckedColor="red"
             />
-            {touched.acceptTermsAndCondition &&
-              errors.acceptTermsAndCondition && (
-                <Text style={styles.errorText}>
-                  {errors.acceptTermsAndCondition}
-                </Text>
-              )}
+            {errors.acceptTermsAndCondition && (
+              <Text style={styles.errorText}>
+                {errors.acceptTermsAndCondition}
+              </Text>
+            )}
             <Pressable
               onPress={() => navigation.navigate('FormScreen2')}
               style={styles.pressable}>
               <Text>Back</Text>
             </Pressable>
             <Pressable style={styles.pressable} onPress={() => handleSubmit()}>
+              <Text>Save</Text>
+            </Pressable>
+            <Pressable style={[styles.pressable, styles.disabled]} disabled>
               <Text>Save and Next</Text>
             </Pressable>
           </View>

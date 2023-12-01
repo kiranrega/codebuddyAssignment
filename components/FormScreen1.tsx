@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -16,6 +16,7 @@ const form1ValidationSchema = Yup.object().shape({
 
 const FormScreen1 = ({navigation}: any) => {
   const {setFieldData} = useFormContext();
+  const [saveNext, setSaveNext] = useState(false);
 
   return (
     <Formik
@@ -56,6 +57,14 @@ const FormScreen1 = ({navigation}: any) => {
               <Text>Back</Text>
             </Pressable>
             <Pressable style={styles.pressable} onPress={() => handleSubmit()}>
+              <Text>Save</Text>
+            </Pressable>
+            <Pressable
+              style={styles.pressable}
+              onPress={() => {
+                handleSubmit();
+                setSaveNext(true);
+              }}>
               <Text>Save and Next</Text>
             </Pressable>
           </View>
